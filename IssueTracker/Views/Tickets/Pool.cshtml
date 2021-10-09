@@ -1,0 +1,57 @@
+﻿@model IEnumerable < IssueTracker.Models.Ticket>
+
+@{
+    ViewBag.Title = "Pool";
+}
+
+
+
+   <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tickets Pool</h1>
+        <p class="mb-4">Tickets Pool.</p>
+        <!-- DataTales Example -->
+         <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Tickets Pool</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+          <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>Project @Html.DisplayNameFor(model => model.Project.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.state)</th>
+            <th>@Html.DisplayNameFor(model => model.Created)</th>
+            <th>@Html.DisplayNameFor(model => model.Attachment)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+             @foreach (var item in Model)
+             {
+
+            <tr class="table-row" data-href="#">
+
+                <td>@Html.ActionLink(item.Title, "Details", "Tickets", new { id = item.Id }, null)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Project.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.state)</td>
+                <td>@Html.DisplayFor(modelItem => item.Created)</td>
+                <td>@Html.DisplayFor(modelItem => item.Attachment)</td>
+
+            </tr>
+
+             }
+        </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+

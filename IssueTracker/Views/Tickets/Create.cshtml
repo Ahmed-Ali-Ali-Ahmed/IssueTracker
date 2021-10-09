@@ -1,0 +1,191 @@
+﻿@model IssueTracker.ViewModels.TicketViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@*<div class="col-lg-7 mb-4 ml-5">
+    <div class="card shadow mb-2">
+        <div class="card-header text-center py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Issue a new Ticket</h6>
+        </div>
+
+        <div class="p-5">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Ticket</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.DropDownListFor(model => model.state, ViewBag.states as SelectList, new { @class = "form-control selectpicker" })
+                            @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Priority, ViewBag.prorities as SelectList, new { @class = "form-control selectpicker" })
+                            @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Attachment, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Attachment, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Attachment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            @Html.DropDownList("ProjectId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group text-center">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+        <div class="ml-3">
+            @Html.ActionLink("Back to List", "Index", null, null, new { @class = "btn btn-info" })
+        </div>
+*@
+
+
+
+
+        <div class="container-fluid">
+
+
+
+
+            <div class="row">
+
+
+
+
+
+
+                <div class="col-lg-12 mb-4">
+                    <div class="card shadow mb-2">
+                        <div class="card-header text-center py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Create a new Ticket</h6>
+                        </div>
+
+                        <div class="p-5">
+
+
+
+                            @using (Html.BeginForm("Create", "Tickets", FormMethod.Post, new { ticketView = Model }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+                               
+
+
+                            <div class="form-group row">
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.Project, htmlAttributes: new { @class = "control-label" })
+                                    
+                                        @Html.DropDownList("ProjectId", null, htmlAttributes: new { @class = "form-control col-12" })
+                                        @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
+                                    
+                                </div>
+
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.Priority, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.DropDownListFor(model => model.Priority, Model.prorities, new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.Priority, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-2">
+                                    @Html.LabelFor(model => model.state, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.DropDownListFor(model => model.state, Model.states, new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group col-md-3">
+                                    @Html.LabelFor(model => model.Assigner, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.DropDownListFor(model => model.Assigner.Id, ViewBag.Users as SelectList, new { @class = "form-control custom-select" })
+                                    @Html.ValidationMessageFor(model => model.Assigner, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                                <div class="form-group w-100">
+                                    <label for="Title">description</label>
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @rows = "8" })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+
+
+
+
+
+
+                                <div class="text-center">
+                                    <input type="submit" value="Create" class="btn btn-primary text-center" />
+
+                                </div>
+
+
+
+
+                            }
+
+                            <hr>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ml-3">
+            @Html.ActionLink("Back to List", "Index", null, null, new { @class = "btn btn-info" })
+        </div>

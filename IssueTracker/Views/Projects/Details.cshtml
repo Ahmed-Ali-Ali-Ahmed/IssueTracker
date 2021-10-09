@@ -1,0 +1,114 @@
+﻿@model IssueTracker.Models.Project
+
+
+@{
+    ViewBag.Title = "Details";
+
+}
+
+@*<h2>Details</h2>
+
+    <div>
+        <h4>Project</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+*@
+
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800"> @Html.DisplayFor(model => model.Title)</h1>
+    <p class="mb-4">Project detail.</p>
+
+    <div class="row">
+    <!-- DataTales Example -->
+    <div class="card col-lg-5 shadow mb-4 mr-5">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Project's Tickets</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Tickets)</th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in ViewBag.Tickets)
+                        {
+
+                            <tr class="table-row" data-href="#">
+
+                                <td>@item.Title</td>
+                                <td>@item.state</td>
+                                <td>@item.Created)</td>
+                                
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card col-lg-5 shadow mb-4 ml-5">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Project's Users</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Users</th>
+
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in ViewBag.Users)
+                        {
+
+                            <tr class="table-row" data-href="#">
+
+                                <td>@item.User.userName</td>
+                                <td>@item.userName.Roles</td>
+
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</div>

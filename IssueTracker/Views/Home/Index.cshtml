@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model IEnumerable<IssueTracker.Models.Ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+    <div class="container">
+
+        <div class="row justify-content-md-center mr-5">
+            <div class="card " style="width: 18rem;">
+                <img class="card-img-top" src="~/Content/assets/image/logo.png" alt="Card image cap">
+                <div class="card-body shadow col-12">
+                       @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-Primary mr-2 ml-2", id = "registerLink" })</li>
+                       @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "btn btn-Primary mr-2", id = "loginLink" })</li>
+                    
+                </div>
+            </div>
+        </div>
+
+        <hr class=" my-3 ">
+
+
+        <div class="row justify-content-md-center ml-3">
+            <div class="card shadow mb-4" style="width: 25rem;">
+
+                <div class="card-header py-3 text">
+
+                </div>
+                <div class="card-body">
+                    Task tracking, customer support help desk, and workflow management all wrapped up into one simple issue tracker
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="card shadow mb-4" style="width: 25rem;">
+                    <div class="card-header py-3 text">
+
+                    </div>
+                    <div class="card-body">
+                        No-Issue makes it easy to see who's working on what and where things are at. Avoid ugly spreadsheets or complex software for task, bug, and issue trackin
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
